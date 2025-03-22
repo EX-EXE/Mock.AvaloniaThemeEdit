@@ -1,0 +1,23 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Mock.AvaloniaThemeEdit.App"
+             xmlns:local="using:Mock.AvaloniaThemeEdit"
+             
+             xmlns:vm="using:Mock.AvaloniaThemeEdit.ViewModels"
+             RequestedThemeVariant="{Binding CurrentTheme.Value}"
+             x:DataType="vm:ApplicationViewModel"
+             >
+
+  <Application.DataContext>
+    <vm:ApplicationViewModel></vm:ApplicationViewModel>
+  </Application.DataContext>
+  <Application.DataTemplates>
+    <local:ViewLocator/>
+  </Application.DataTemplates>
+
+  <Application.Styles>
+    <FluentTheme>
+    </FluentTheme>
+    <StyleInclude Source="avares://Avalonia.Controls.ColorPicker/Themes/Fluent/Fluent.xaml" ></StyleInclude>
+  </Application.Styles>
+</Application>

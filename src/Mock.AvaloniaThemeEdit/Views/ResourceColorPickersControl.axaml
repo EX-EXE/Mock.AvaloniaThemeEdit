@@ -1,0 +1,48 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Mock.AvaloniaThemeEdit.ViewModels"
+        mc:Ignorable="d"
+        x:Class="Mock.AvaloniaThemeEdit.Views.ResourceColorPickersControl"
+        x:DataType="vm:ResourceColorManager">
+  <Design.DataContext>
+    <vm:ResourceColorManager/>
+  </Design.DataContext>
+  
+  <ScrollViewer
+    HorizontalScrollBarVisibility="Auto"
+    VerticalScrollBarVisibility="Auto">
+    
+    
+    <ItemsRepeater ItemsSource="{Binding GroupColorView}" Margin="10,10,10,10">
+      <ItemsRepeater.Layout>
+        <StackLayout Spacing="5" Orientation="Horizontal" />
+      </ItemsRepeater.Layout>
+      <ItemsRepeater.ItemTemplate>
+        <DataTemplate>
+          <Border Margin="0,0,0,0"
+              CornerRadius="5"
+              BorderBrush="Blue" BorderThickness="1"
+              Padding="5,0,5,0">
+            <ItemsRepeater ItemsSource="{Binding ResourceColorView}" Margin="0 20">
+              <ItemsRepeater.Layout>
+                <StackLayout Spacing="2.5" Orientation="Vertical" />
+              </ItemsRepeater.Layout>
+              <ItemsRepeater.ItemTemplate>
+                <DataTemplate>
+                  <Grid ColumnDefinitions="*,100">
+                    <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{Binding Name}" >
+                    </TextBlock>
+                    <ColorPicker Grid.Column="1"  Color="{Binding ResourceColor.Value}"  IsColorPaletteVisible="True"></ColorPicker>
+                  </Grid>
+                </DataTemplate>
+              </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+          </Border>
+        </DataTemplate>
+      </ItemsRepeater.ItemTemplate>
+    </ItemsRepeater>
+  </ScrollViewer>
+
+</UserControl>
